@@ -45,9 +45,7 @@ export default function SuggestionEngine() {
       setStatus("done");
     } catch (e) {
       console.error(e);
-      setError(
-        "Generation failed. Check that your browser supports WebGPU (Chrome/Edge on desktop) and try again."
-      );
+      setError(e instanceof Error ? e.message : "Generation failed. Please try again.");
       setStatus("error");
     }
   }
