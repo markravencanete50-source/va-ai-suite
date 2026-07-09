@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-ink text-paper font-body antialiased;
+}
+
+::selection {
+  @apply bg-pulse/30;
+}
+
+.card {
+  @apply bg-panel border border-line rounded-lg;
+}
+
+.label-mono {
+  @apply font-mono text-[11px] uppercase tracking-[0.14em] text-fog;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

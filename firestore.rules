@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Single-operator tool: lock writes down before adding clients/users.
+    match /{document=**} {
+      allow read, write: if true; // TODO: replace with `request.auth != null` after enabling Firebase Auth
+    }
+  }
+}
