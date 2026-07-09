@@ -7,10 +7,10 @@ AI console for VA services. The model runs **inside the browser** (WebLLM + WebG
 | Module | Status | Stack |
 |---|---|---|
 | Suggestions (captions / SEO / ICP) | ✅ Live | @mlc-ai/web-llm, JSON mode → Firestore |
-| Documents (docx / pptx / pdf) | Scaffold | docx, pptxgenjs, @react-pdf/renderer |
-| Invoices | Scaffold | @react-pdf/renderer (invoify pattern) |
-| Social scheduler + analytics | Scaffold | Firestore `posts` + Vercel Cron + platform OAuth (postiz-app provider patterns) |
-| Prospects / market rates | Scaffold | Local Playwright scripts → Firestore Admin SDK |
+| Documents (proposal / SOW / onboarding / case study → docx / pptx / pdf) | ✅ Live | WebLLM draft + docx, pptxgenjs, @react-pdf/renderer (all client-side) |
+| Invoices (branded PDF, draft→sent→paid) | ✅ Live | @react-pdf/renderer + Firestore `invoices` |
+| Social scheduler | ✅ Live | Firestore `posts` + daily Vercel Cron → optional `MAKE_WEBHOOK_URL` for real publishing |
+| Prospects / market rates | ✅ Live | Firestore `prospects` + `scripts/import-prospects.mjs` CSV importer |
 
 ## Setup
 
@@ -31,5 +31,6 @@ First generation downloads the model (~1.8GB, Llama 3.2 3B q4) and caches it in 
 ## Notes
 
 - `next.config.mjs` sets COOP/COEP headers — required for WebGPU/SharedArrayBuffer. Don't remove.
+- Social publishing: the daily cron POSTs due posts to `MAKE_WEBHOOK_URL` (a Make.com custom webhook that routes to each platform). Without it, posts stay queued and you publish manually via the ✓ button.
 - Never run scrapers from Vercel. Keep them in `/scripts`, run on your PC, write to Firestore with the Admin SDK.
 - Reference repos: gitroomhq/postiz-app (social providers), al1abb/invoify (invoice UI), joeyism/linkedin_scraper (prospects).

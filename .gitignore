@@ -5,3 +5,5 @@ out/
 .vercel
 *.tsbuildinfo
 serviceAccountKey.json
+
+.vercel

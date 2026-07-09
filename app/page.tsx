@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const MODULES = [
   { href: "/suggestions", title: "Suggestions", desc: "Captions, SEO packs, ICP profiles — generated on-device.", status: "live" },
-  { href: "/documents", title: "Documents", desc: "Word, PowerPoint, PDF exports built client-side.", status: "scaffold" },
-  { href: "/invoices", title: "Invoices", desc: "Branded PDF invoices from Firestore records.", status: "scaffold" },
-  { href: "/social", title: "Social", desc: "Metricool-style calendar, scheduling and analytics.", status: "scaffold" },
-  { href: "/prospects", title: "Prospects", desc: "LinkedIn target lists and market rates from local scrapers.", status: "scaffold" },
+  { href: "/documents", title: "Documents", desc: "AI-drafted proposals and SOWs — exported as Word, PowerPoint or PDF.", status: "live" },
+  { href: "/invoices", title: "Invoices", desc: "Branded PDF invoices with draft/sent/paid tracking.", status: "live" },
+  { href: "/social", title: "Social", desc: "Post queue with daily auto-publish via Make webhook.", status: "live" },
+  { href: "/prospects", title: "Prospects", desc: "Lead pipeline, CSV bulk import and market rate reference.", status: "live" },
 ];
 
 export default function Home() {

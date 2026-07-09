@@ -26,7 +26,8 @@ export function getEngine(
 export async function generateJSON<T>(
   systemPrompt: string,
   userPrompt: string,
-  onProgress?: (report: InitProgressReport) => void
+  onProgress?: (report: InitProgressReport) => void,
+  maxTokens = 1200
 ): Promise<T> {
   const engine = await getEngine(onProgress);
   const reply = await engine.chat.completions.create({
@@ -35,7 +36,7 @@ export async function generateJSON<T>(
       { role: "user", content: userPrompt },
     ],
     temperature: 0.7,
-    max_tokens: 1200,
+    max_tokens: maxTokens,
     response_format: { type: "json_object" },
   });
   const raw = reply.choices[0]?.message?.content ?? "{}";
